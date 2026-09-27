@@ -42,7 +42,7 @@ export default function MythQuiz({ heading }: { heading: ReactNode }) {
         </div>
       </div>
       <div className="mt-10 grid gap-6 lg:grid-cols-[18rem_1fr]">
-        <ol className="flex flex-wrap gap-2 lg:grid lg:content-start lg:gap-2.5">
+        <ol className="flex min-w-0 flex-wrap gap-2 lg:grid lg:content-start lg:gap-2.5">
           {quiz.map((item, i) => {
             const a = answers[i];
             const state =
@@ -88,7 +88,7 @@ export default function MythQuiz({ heading }: { heading: ReactNode }) {
           })}
         </ol>
 
-        <div className="rounded-[26px] border-[1.5px] border-ink bg-paper p-6 shadow-[8px_8px_0_var(--color-orange)] sm:p-8">
+        <div className="min-w-0 rounded-[26px] border-[1.5px] border-ink bg-paper p-5 shadow-[8px_8px_0_var(--color-orange)] sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className="chip">
               Pernyataan {current + 1} dari {quiz.length}
@@ -183,19 +183,19 @@ export default function MythQuiz({ heading }: { heading: ReactNode }) {
             )}
           </div>
 
-          <div className="mt-6 flex items-center justify-between gap-3">
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:items-center sm:justify-between">
             <button
               type="button"
               onClick={() => setCurrent((c) => Math.max(0, c - 1))}
               disabled={current === 0}
-              className="btn btn-light py-2! text-xs! disabled:opacity-40"
+              className="btn btn-light justify-center py-2! text-xs! disabled:opacity-40"
             >
               <LuChevronLeft size={14} /> Sebelumnya
             </button>
             <button
               type="button"
               onClick={reset}
-              className="text-xs font-semibold underline underline-offset-4"
+              className="order-last col-span-2 text-xs font-semibold underline underline-offset-4 sm:order-none"
             >
               Ulangi kuis
             </button>
@@ -205,7 +205,7 @@ export default function MythQuiz({ heading }: { heading: ReactNode }) {
                 setCurrent((c) => Math.min(quiz.length - 1, c + 1))
               }
               disabled={current === quiz.length - 1}
-              className="btn btn-dark py-2! text-xs! shadow-none! disabled:opacity-40"
+              className="btn btn-dark justify-center py-2! text-xs! shadow-none! disabled:opacity-40"
             >
               Berikutnya <LuChevronRight size={14} />
             </button>

@@ -99,7 +99,7 @@ export default function StresAkademik() {
             aside="Stres yang dibiarkan bisa merembet ke belajar, tubuh, dan hubungan dengan orang lain."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <article className="relative min-h-80 overflow-hidden rounded-[26px] border-[1.5px] border-white bg-lavender p-7 shadow-[6px_6px_0_var(--color-orange)] md:row-span-2">
+            <article className="relative min-h-48 overflow-hidden rounded-[26px] border-[1.5px] border-white bg-lavender p-7 shadow-[6px_6px_0_var(--color-orange)] md:row-span-2">
               <span className="chip">Pada kegiatan belajar</span>
               <ul className="mt-5 grid gap-2.5 text-[0.95rem] font-semibold">
                 {[
@@ -114,7 +114,7 @@ export default function StresAkademik() {
                   </li>
                 ))}
               </ul>
-              <TangledStudy className="absolute -right-6 -bottom-6 w-[80%] max-w-46 sm:max-w-60 xl:max-w-80 " />
+              <TangledStudy className="absolute -right-6 -bottom-6 w-[80%] hidden sm:block sm:max-w-60 xl:max-w-80 " />
             </article>
 
             <article className="relative flex min-h-48 items-center overflow-hidden rounded-[26px] border-[1.5px] border-white bg-butter p-7 shadow-[6px_6px_0_var(--color-orange)]">
@@ -149,7 +149,7 @@ export default function StresAkademik() {
                   </li>
                 ))}
               </ul>
-              <RainCloud className="absolute -right-4 -bottom-4 w-[80%] max-w-38 sm:max-w-60 md:hidden lg:block lg:max-w-46 xl:max-w-60" />
+              <RainCloud className="absolute -right-4 -bottom-4 w-[80%] hidden sm:block sm:max-w-60 md:hidden lg:block lg:max-w-46 xl:max-w-60" />
             </article>
           </div>
         </Container>

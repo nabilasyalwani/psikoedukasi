@@ -105,7 +105,7 @@ export default function BarrierExplorer() {
               </span>
               Coba lihat dari sisi lain
             </p>
-            <p className="mt-3 rounded-2xl bg-ink p-5 font-display text-xl leading-snug font-bold text-white shadow-[4px_4px_0_#fff]">
+            <p className="mt-3 rounded-2xl bg-ink p-5 font-display text-md leading-snug font-bold text-white shadow-[4px_4px_0_#fff]">
               {b.reframe}
             </p>
           </div>

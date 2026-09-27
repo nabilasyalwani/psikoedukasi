@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { services, type Service } from "@/lib/content";
 import {
   LuChevronLeft,
@@ -76,6 +76,73 @@ export default function ServiceCarousel() {
     return () => window.removeEventListener("keydown", onKey);
   }, [idx, go]);
 
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [dragFrac, setDragFrac] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const drag = useRef({ startX: 0, startY: 0, active: false, moved: false });
+
+  const stepPx = () => {
+    const slide = stageRef.current?.querySelector<HTMLElement>("[role=group]");
+    return (slide?.offsetWidth ?? 320) * 0.78;
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    drag.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      active: true,
+      moved: false,
+    };
+  };
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      const d = drag.current;
+      if (!d.active) return;
+      const dx = e.clientX - d.startX;
+      if (!d.moved) {
+        if (Math.abs(dx) < 6) return;
+        if (Math.abs(e.clientY - d.startY) > Math.abs(dx)) {
+          d.active = false;
+          return;
+        }
+        d.moved = true;
+        setDragging(true);
+      }
+      setDragFrac(dx / stepPx());
+    };
+    const onUp = (e: PointerEvent) => {
+      const d = drag.current;
+      if (!d.active) return;
+      d.active = false;
+      if (d.moved) {
+        const dx = e.clientX - d.startX;
+        let steps = Math.round(-dx / stepPx());
+        if (steps === 0 && Math.abs(dx) > 50) steps = dx < 0 ? 1 : -1;
+        if (steps) go(idx + steps);
+      }
+      setDragging(false);
+      setDragFrac(0);
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+    };
+  }, [idx, go]);
+
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      drag.current.moved = false;
+    }
+  };
+
   return (
     <div
       data-carousel
@@ -83,13 +150,22 @@ export default function ServiceCarousel() {
       aria-roledescription="carousel"
       aria-label="Daftar layanan psikologi"
     >
-      <div className="relative mx-auto h-117.5 max-w-6xl perspective-[1400px]">
+      <div
+        ref={stageRef}
+        onPointerDown={onPointerDown}
+        onClickCapture={onClickCapture}
+        onDragStart={(e) => e.preventDefault()}
+        className={`relative mx-auto h-117.5 max-w-6xl touch-pan-y perspective-[1400px] ${
+          dragging ? "cursor-grabbing select-none" : "cursor-grab"
+        }`}
+      >
         {services.map((s, i) => {
           let off = i - idx;
           if (off > n / 2) off -= n;
           if (off < -n / 2) off += n;
-          const abs = Math.abs(off);
-          const hidden = abs > 2;
+          const pos = off + dragFrac;
+          const abs = Math.abs(pos);
+          const hidden = abs > 2.5;
           return (
             <div
               key={s.initials}
@@ -98,15 +174,15 @@ export default function ServiceCarousel() {
               aria-label={`${i + 1} dari ${n}: ${s.name}`}
               aria-hidden={off !== 0}
               onClick={() => off !== 0 && go(i)}
-              className={`absolute top-4 left-1/2 h-105 w-[min(20rem,82vw)] transition-all duration-500 ${
-                off !== 0 ? "cursor-pointer" : ""
-              }`}
+              className={`absolute top-4 left-1/2 h-105 w-[min(20rem,82vw)] ${
+                dragging ? "" : "transition-all duration-500"
+              } ${off !== 0 && !dragging ? "cursor-pointer" : ""}`}
               style={{
-                transform: `translateX(calc(-50% + ${off * 78}%)) scale(${1 - abs * 0.12}) rotateY(${off * -14}deg)`,
-                zIndex: 10 - abs,
+                transform: `translateX(calc(-50% + ${pos * 78}%)) scale(${1 - abs * 0.12}) rotateY(${pos * -14}deg)`,
+                zIndex: 10 - Math.round(abs),
                 opacity: hidden ? 0 : 1,
                 filter:
-                  off === 0
+                  abs < 0.01
                     ? "none"
                     : `grayscale(${0.4 * abs}) brightness(${1 - abs * 0.15})`,
                 pointerEvents: hidden ? "none" : undefined,
