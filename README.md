@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Psikoedukasi
 
-## Getting Started
+**Tidak Harus Menghadapi Semuanya Sendiri.**
 
-First, run the development server:
+Psikoedukasi adalah website edukasi untuk mahasiswa tentang **stres akademik** dan **pentingnya mencari bantuan profesional**. Website ini mengajak pengunjung mengenali apa yang sedang mereka alami, memahami hal-hal yang sering membuat ragu untuk meminta bantuan, dan menemukan layanan psikologi yang bisa dihubungi di Makassar dan Sulawesi Selatan.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+> Website ini bukan alat diagnosis dan tidak menggantikan konsultasi dengan psikolog atau tenaga profesional.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tujuan
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Membantu mahasiswa **mengenali stres akademik** sejak awal: pengertian, penyebab, dan dampaknya.
+- Menunjukkan bahwa **mencari bantuan adalah langkah berani**, bukan tanda kelemahan.
+- Meluruskan **mitos** seputar psikolog dan konseling.
+- Memberi **panduan langkah demi langkah** dan **daftar layanan** yang bisa langsung dihubungi.
 
-## Learn More
+## Sasaran Pengguna
 
-To learn more about Next.js, take a look at the following resources:
+Mahasiswa yang sedang merasa tertekan oleh tuntutan kuliah, teman atau keluarga yang ingin mendukung, serta siapa pun yang ingin belajar tentang kesehatan mental di lingkungan kampus.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Isi Website
 
-## Deploy on Vercel
+Website terdiri dari enam halaman yang disusun seperti sebuah perjalanan singkat.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| No  | Halaman                                    | Isi utama                                                                                                                                           |
+| --- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 01  | **Beranda**                                | Pesan utama, penjelasan singkat, dan peta lima bab materi.                                                                                          |
+| 02  | **Mengenali Stres Akademik**               | Pengertian stres akademik, empat faktor penyebab (akademik, pribadi, sosial, lingkungan), dampaknya, refleksi diri, dan ilustrasi "tumpukan beban". |
+| 03  | **Mengapa Mencari Bantuan Itu Penting?**   | Pengertian _help-seeking_, perbedaan psikolog, konselor, dan psikiater, enam manfaat bantuan profesional, serta kuis Mitos atau Fakta.              |
+| 04  | **Apa yang Membuat Ragu Mencari Bantuan?** | Enam hambatan yang sering dirasakan, masing-masing dengan sudut pandang lain untuk melihatnya.                                                      |
+| 05  | **Dukungan dari Orang Sekitar**            | Siapa saja yang bisa mendukung, peran mereka, dan cara mendukung teman yang sedang kesulitan.                                                       |
+| 06  | **Mencari Bantuan Itu Bisa Dilakukan**     | Tujuh langkah sederhana mencari bantuan dan daftar enam layanan psikologi beserta kontaknya.                                                        |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Konsep Website
+
+![Konsep Desain Psikoedukasi](assets/img/konsep-desain-psikoedukasi.png)
+
+## Catatan
+
+Informasi di website ini bersifat edukatif. Jika stres mulai mengganggu aktivitas sehari-hari, itu sudah cukup menjadi alasan untuk mencari bantuan dari tenaga profesional.
