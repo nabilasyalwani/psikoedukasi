@@ -35,7 +35,7 @@ export default function BarrierExplorer() {
             Enam hal yang sering bikin ragu.
           </h2>
         </div>
-        <div className="text-right" aria-live="polite">
+        <div className="text-right hidden md:block" aria-live="polite">
           <p className="text-xs text-muted">
             Sudah kamu lihat:{" "}
             <strong className="text-ink">
