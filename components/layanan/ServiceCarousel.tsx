@@ -9,9 +9,12 @@ import {
   LuMapPin,
   LuPhone,
 } from "react-icons/lu";
+import { FaWhatsapp } from "react-icons/fa6";
 
-const telHref = (phone: string) =>
-  `tel:+62${phone.replace(/\D/g, "").replace(/^0/, "")}`;
+const intl = (phone: string) =>
+  `62${phone.replace(/\D/g, "").replace(/^0/, "")}`;
+const telHref = (phone: string) => `tel:+${intl(phone)}`;
+const waHref = (phone: string) => `https://wa.me/${intl(phone)}`;
 
 function Card({ s, active }: { s: Service; active: boolean }) {
   return (
@@ -35,20 +38,29 @@ function Card({ s, active }: { s: Service; active: boolean }) {
           <LuPhone size={14} className="shrink-0" />
           {s.phone}
         </p>
-        <div className="mt-auto grid grid-cols-2 gap-2 pt-6">
+        <div className="mt-auto grid grid-cols-2 gap-2 pt-5">
           <a
             href={telHref(s.phone)}
             tabIndex={active ? 0 : -1}
             className="btn btn-dark justify-center px-3! py-2.5! text-xs! shadow-none!"
           >
-            <LuPhone size={13} /> Hubungi
+            <LuPhone size={13} /> Telepon
+          </a>
+          <a
+            href={waHref(s.phone)}
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={active ? 0 : -1}
+            className="btn justify-center bg-[#25D366] px-3! py-2.5! text-xs! text-ink"
+          >
+            <FaWhatsapp size={14} /> WhatsApp
           </a>
           <a
             href={`https://instagram.com/${s.instagram}`}
             target="_blank"
             rel="noopener noreferrer"
             tabIndex={active ? 0 : -1}
-            className="btn btn-light justify-center overflow-hidden px-3! py-2.5! text-xs!"
+            className="btn btn-light col-span-2 justify-center overflow-hidden px-3! py-2.5! text-xs!"
             title={`@${s.instagram}`}
           >
             <LuInstagram size={13} className="shrink-0" />
