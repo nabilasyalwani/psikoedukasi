@@ -33,7 +33,7 @@ export default function CauseTabs() {
               aria-selected={on}
               aria-controls="cause-panel"
               onClick={() => setActive(i)}
-              className={`flex items-center gap-3 rounded-2xl border-[1.5px] border-ink px-4 py-3 text-left transition-all ${
+              className={`flex items-center gap-3 rounded-2xl border-[1.5px] border-ink px-4 py-3 text-left transition-all duration-300 ease-spring active:scale-95 ${
                 on
                   ? "bg-ink text-white shadow-[4px_4px_0_var(--color-lavender)]"
                   : "bg-white hover:-translate-y-0.5"
@@ -79,7 +79,7 @@ export default function CauseTabs() {
             {c.items.map((item, i) => (
               <li
                 key={item}
-                className="fade-up flex items-center gap-4 rounded-2xl border-[1.5px] border-ink bg-paper px-4 py-3.5 text-sm font-medium"
+                className="fade-up flex items-center gap-4 rounded-2xl border-[1.5px] border-ink bg-paper px-4 py-3.5 text-sm font-medium transition-all duration-300 ease-spring hover:translate-x-1 hover:bg-white hover:shadow-[3px_3px_0_var(--color-ink)]"
                 style={{ animationDelay: `${i * 60}ms` }}
               >
                 <span

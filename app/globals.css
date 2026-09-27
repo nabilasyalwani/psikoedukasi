@@ -18,6 +18,8 @@
   --color-indigo: #4052b5;
   --color-indigo-soft: #7d8de0;
 
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 }
@@ -52,7 +54,7 @@
   }
 }
 
-/* ---------- Reusable pieces ---------- */
+/* ---------- Reusable ---------- */
 
 @layer components {
   .dots-bg {
@@ -75,12 +77,18 @@
 
   .lift {
     transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
+      transform 0.35s var(--ease-spring),
+      box-shadow 0.35s var(--ease-spring);
   }
-  .lift:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0 var(--color-ink);
+  .lift:hover,
+  .lift:focus-visible {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0 var(--color-ink);
+  }
+  .lift:active {
+    transform: translate(1px, 1px);
+    box-shadow: 3px 3px 0 var(--color-ink);
+    transition-duration: 0.1s;
   }
 
   .btn {
@@ -93,31 +101,106 @@
     font-size: 0.875rem;
     padding: 0.7rem 1.25rem;
     border: 1.5px solid var(--color-ink);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     transition:
-      transform 0.15s ease,
-      box-shadow 0.15s ease,
-      background 0.15s;
+      transform 0.3s var(--ease-spring),
+      box-shadow 0.3s var(--ease-spring),
+      background-color 0.2s,
+      color 0.2s;
     white-space: nowrap;
   }
-  .btn:hover {
-    transform: translate(-1px, -1px);
+  /* Kilau yang menyapu tombol saat hover */
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      rgb(255 255 255 / 0.35) 50%,
+      transparent 65%
+    );
+    translate: -110% 0;
+    transition: translate 0.7s ease;
+    pointer-events: none;
+  }
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    translate: 110% 0;
+  }
+  .btn:hover,
+  .btn:focus-visible {
+    transform: translate(-2px, -2px);
   }
   .btn:active {
-    transform: translate(1px, 1px);
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 var(--color-ink);
+    transition-duration: 0.1s;
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  .btn:disabled::before {
+    display: none;
+  }
+  .btn > svg:last-child,
+  .btn > .btn-icon {
+    transition:
+      translate 0.3s var(--ease-spring),
+      rotate 0.3s var(--ease-spring);
+  }
+  .btn:not(:disabled):hover > svg:last-child,
+  .btn:focus-visible > svg:last-child {
+    translate: 3px 0;
+  }
+  .btn:hover > .btn-icon,
+  .btn:focus-visible > .btn-icon {
+    translate: 3px 0;
+    rotate: -45deg;
   }
   .btn-dark {
     background: var(--color-ink);
     color: #fff;
     box-shadow: 4px 4px 0 var(--color-pink);
   }
+  .btn-dark:hover,
+  .btn-dark:focus-visible {
+    box-shadow: 6px 6px 0 var(--color-pink);
+  }
   .btn-light {
     background: #fff;
     color: var(--color-ink);
+  }
+  .btn-light:hover,
+  .btn-light:focus-visible {
+    background: var(--color-cream);
+    box-shadow: 4px 4px 0 var(--color-ink);
   }
   .btn-orange {
     background: var(--color-orange);
     color: var(--color-ink);
     box-shadow: 3px 3px 0 var(--color-ink);
+  }
+  .btn-orange:hover,
+  .btn-orange:focus-visible {
+    box-shadow: 5px 5px 0 var(--color-ink);
+  }
+
+  .link-underline {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px
+      no-repeat;
+    transition:
+      background-size 0.3s ease,
+      color 0.2s;
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1.5px;
   }
 
   .chip {
@@ -186,6 +269,59 @@
   .spin-slow {
     animation: spin-slow 22s linear infinite;
   }
+  .spin-slower {
+    animation: spin-slow 60s linear infinite;
+  }
+  .spin-reverse {
+    animation-direction: reverse;
+  }
+  .pause-on-hover:hover,
+  .group:hover .group-pause {
+    animation-play-state: paused;
+  }
+
+  @keyframes sway {
+    0%,
+    100% {
+      rotate: -2.5deg;
+    }
+    50% {
+      rotate: 2.5deg;
+    }
+  }
+  .sway {
+    animation: sway 7s ease-in-out infinite;
+  }
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      rotate: 0deg;
+    }
+    25% {
+      rotate: -12deg;
+    }
+    75% {
+      rotate: 12deg;
+    }
+  }
+  .wiggle-on-hover:hover,
+  .group:hover .group-wiggle,
+  .group:focus-visible .group-wiggle {
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  @keyframes pulse-ring {
+    from {
+      box-shadow: 0 0 0 0 rgb(244 146 42 / 0.7);
+    }
+    to {
+      box-shadow: 0 0 0 10px rgb(244 146 42 / 0);
+    }
+  }
+  .pulse-ring {
+    animation: pulse-ring 1.8s ease-out infinite;
+  }
 
   @keyframes floaty {
     50% {
@@ -208,6 +344,23 @@
   }
   .fade-up {
     animation: fade-up 0.35s ease both;
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      translate: 0 36px;
+      scale: 0.96;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 70%;
+      }
+    }
   }
 
   @keyframes release {

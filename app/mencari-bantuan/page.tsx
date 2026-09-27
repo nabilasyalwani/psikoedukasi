@@ -54,8 +54,11 @@ export default function MencariBantuan() {
           </div>
           <div className="relative mx-auto aspect-square w-full max-w-sm">
             <div className="brutal absolute inset-0 rounded-full bg-periwinkle" />
-            <NightWindow className="absolute inset-0 m-auto w-[82%]" priority />
-            <span className="brutal-sm absolute bottom-10 left-0 -rotate-6 rounded-full bg-pink px-3 py-1.5 text-xs font-bold">
+            <NightWindow
+              className="sway absolute inset-0 m-auto w-[82%]"
+              priority
+            />
+            <span className="brutal-sm floaty absolute bottom-10 left-0 -rotate-6 rounded-full bg-pink px-3 py-1.5 text-xs font-bold">
               Berani merawat diri
             </span>
           </div>
@@ -94,7 +97,7 @@ export default function MencariBantuan() {
               return (
                 <article
                   key={p.no}
-                  className="brutal lift overflow-hidden rounded-3xl bg-white"
+                  className="brutal lift reveal group overflow-hidden rounded-3xl bg-white"
                 >
                   <div
                     className={`tone-${p.tone} flex items-center justify-between border-b-[1.5px] border-ink p-5`}
@@ -102,7 +105,11 @@ export default function MencariBantuan() {
                     <span className="brutal-sm grid size-14 place-items-center rounded-2xl bg-white font-display text-xl font-extrabold">
                       {p.no}
                     </span>
-                    <Icon size={44} strokeWidth={1.4} className="opacity-50" />
+                    <Icon
+                      size={44}
+                      strokeWidth={1.4}
+                      className="group-wiggle opacity-50 transition-opacity group-hover:opacity-90"
+                    />
                   </div>
                   <div className="p-6">
                     <h3 className="text-2xl font-extrabold">{p.title}</h3>
@@ -136,9 +143,9 @@ export default function MencariBantuan() {
           <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
             <ol className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
               {benefits.map((b, i) => (
-                <li key={b.title}>
+                <li key={b.title} className="reveal group">
                   <span
-                    className="block font-display text-7xl leading-none font-extrabold text-lavender"
+                    className="block origin-bottom-left font-display text-7xl leading-none font-extrabold text-lavender transition-all duration-300 ease-spring group-hover:-rotate-6 group-hover:text-orange"
                     aria-hidden
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -167,7 +174,7 @@ export default function MencariBantuan() {
             </div>
             <Link
               href="/langkah-layanan#layanan"
-              className="mt-5 flex items-center justify-center gap-2 rounded-full border-[1.5px] border-ink bg-indigo py-3.5 text-sm font-bold text-white shadow-[4px_4px_0_var(--color-ink)] transition-transform hover:-translate-y-0.5"
+              className="btn mt-5 flex items-center justify-center gap-2 rounded-full border-[1.5px] border-ink bg-indigo py-3.5 text-sm font-bold text-white shadow-[4px_4px_0_var(--color-ink)] transition-transform hover:-translate-y-0.5"
             >
               Lihat layanan psikologi <LuArrowRight />
             </Link>

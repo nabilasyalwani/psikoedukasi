@@ -69,7 +69,10 @@ export default function StresAkademik() {
           </div>
           <div className="relative mx-auto aspect-square w-full max-w-md">
             <div className="brutal absolute inset-0 rounded-full bg-butter" />
-            <Overwhelmed className="absolute inset-0 m-auto w-[86%]" priority />
+            <Overwhelmed
+              className="floaty absolute inset-0 m-auto w-[86%]"
+              priority
+            />
           </div>
         </Container>
       </section>
@@ -117,13 +120,19 @@ export default function StresAkademik() {
             <article className="relative flex min-h-48 items-center overflow-hidden rounded-[26px] border-[1.5px] border-white bg-butter p-7 shadow-[6px_6px_0_var(--color-orange)]">
               <div className="relative z-10">
                 <span className="chip">Pada tubuh</span>
-                <p className="mt-4 font-display text-3xl leading-tight font-extrabold">
-                  Kelelahan
-                  <br />
-                  Gangguan tidur
-                </p>
+                <ul className="mt-5 grid gap-2.5 text-[0.95rem] font-semibold">
+                  {["Kelelahan", "Gangguan tidur"].map((d) => (
+                    <li key={d} className="flex items-center gap-3">
+                      <span
+                        className="size-2 rounded-full bg-ink"
+                        aria-hidden
+                      />
+                      {d}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <Sleepless className="absolute right-0 bottom-0  w-[80%] max-w-38 sm:max-w-60 xl:max-w-80" />
+              <Sleepless className="absolute right-0 bottom-0  w-[80%] max-w-46 sm:max-w-60 md:max-w-52 lg:max-w-70 xl:max-w-80" />
             </article>
 
             <article className="relative min-h-48 overflow-hidden rounded-[26px] border-[1.5px] border-white bg-pink p-7 shadow-[6px_6px_0_var(--color-orange)]">
@@ -140,7 +149,7 @@ export default function StresAkademik() {
                   </li>
                 ))}
               </ul>
-              <RainCloud className="absolute -right-4 -bottom-4 w-[80%] max-w-38 sm:max-w-60 md:hidden xl:block" />
+              <RainCloud className="absolute -right-4 -bottom-4 w-[80%] max-w-38 sm:max-w-60 md:hidden lg:block lg:max-w-46 xl:max-w-60" />
             </article>
           </div>
         </Container>

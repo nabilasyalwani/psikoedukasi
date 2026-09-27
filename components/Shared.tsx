@@ -92,7 +92,9 @@ export function NextChapter({
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="hidden h-28 w-40 sm:block">{art}</div>
+            <div className="hidden h-28 w-40 transition-transform duration-500 ease-spring group-hover:scale-110 group-hover:-rotate-3 sm:block">
+              {art}
+            </div>
             <span className="grid size-12 shrink-0 place-items-center rounded-full bg-ink text-white transition-transform group-hover:translate-x-1">
               <LuArrowRight size={20} />
             </span>

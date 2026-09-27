@@ -44,11 +44,12 @@ export default function Hambatan() {
           </div>
           <div className="relative mx-auto aspect-square w-full max-w-md">
             <div className="brutal absolute inset-4 rounded-full bg-pink" />
-            <Doubts className="absolute inset-0 m-auto w-[92%]" priority />
-            {bubbles.map((b) => (
+            <Doubts className="floaty absolute inset-0 m-auto w-[92%]" priority />
+            {bubbles.map((b, i) => (
               <span
                 key={b.text}
-                className={`brutal-sm absolute rounded-xl px-3 py-1.5 text-xs font-bold ${b.cls}`}
+                className={`brutal-sm floaty absolute rounded-xl px-3 py-1.5 text-xs font-bold ${b.cls}`}
+                style={{ animationDelay: `${i * -1.6}s` }}
               >
                 {b.text}
               </span>
@@ -68,7 +69,7 @@ export default function Hambatan() {
         title="Dukungan dari Orang Sekitar"
         href="/dukungan"
         tone="butter"
-        art={<PeopleCircle className="h-full w-full" />}
+        art={<PeopleCircle className="spin-slower h-full w-full" />}
       />
     </>
   );

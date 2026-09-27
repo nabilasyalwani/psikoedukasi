@@ -130,14 +130,14 @@ export default function MythQuiz({ heading }: { heading: ReactNode }) {
                 ? o.fact
                   ? "bg-mint"
                   : "bg-pink"
-                : "bg-white hover:bg-cream";
+                : "bg-white hover:-translate-y-0.5 hover:bg-cream hover:shadow-[3px_3px_0_var(--color-ink)] active:scale-[0.98]";
               return (
                 <button
                   key={o.text}
                   type="button"
                   onClick={() => choose(i)}
                   disabled={answered}
-                  className={`flex items-center gap-4 rounded-2xl border-[1.5px] border-ink p-4 text-left text-sm font-medium transition-colors disabled:cursor-default ${tone} ${
+                  className={`flex items-center gap-4 rounded-2xl border-[1.5px] border-ink p-4 text-left text-sm font-medium transition-all duration-300 ease-spring disabled:cursor-default ${tone} ${
                     chosen === i ? "shadow-[3px_3px_0_var(--color-ink)]" : ""
                   }`}
                 >
@@ -172,9 +172,7 @@ export default function MythQuiz({ heading }: { heading: ReactNode }) {
                 </span>
                 <div className="text-sm">
                   <p className="font-bold">
-                    {correct
-                      ? "Tepat! Itu faktanya."
-                      : "Hampir! Itu sebenarnya mitos."}
+                    {correct ? "Tepat! Itu faktanya." : "Itu sebenarnya mitos!"}
                   </p>
                   <p className="mt-1 text-muted">
                     <strong className="text-ink">Mari luruskan:</strong>{" "}

@@ -72,7 +72,7 @@ export default function LangkahLayanan() {
                 className="absolute inset-x-6 bottom-0 aspect-square rounded-full bg-ink-soft"
                 aria-hidden
               />
-              <Meditate className="relative w-full" />
+              <Meditate className="floaty relative w-full" />
             </div>
           </div>
 
@@ -84,19 +84,19 @@ export default function LangkahLayanan() {
             {steps.map((s, i) => {
               const last = i === steps.length - 1;
               return (
-                <li key={s} className="relative flex items-center gap-4">
+                <li key={s} className="reveal group relative flex items-center gap-4">
                   <span
-                    className={`relative z-10 grid size-11 shrink-0 place-items-center rounded-full border-[1.5px] border-ink font-display font-extrabold ${
+                    className={`relative z-10 grid size-11 shrink-0 place-items-center rounded-full border-[1.5px] border-ink font-display font-extrabold transition-transform duration-300 ease-spring group-hover:scale-115 ${
                       last ? "bg-orange" : `tone-${stepTones[i]}`
                     }`}
                   >
                     {i + 1}
                   </span>
                   <div
-                    className={`flex flex-1 flex-wrap items-center justify-between gap-2 rounded-2xl border-[1.5px] border-ink px-5 py-4 text-sm font-semibold ${
+                    className={`flex flex-1 flex-wrap items-center justify-between gap-2 rounded-2xl border-[1.5px] border-ink px-5 py-4 text-sm font-semibold transition-all duration-300 ease-spring group-hover:translate-x-1 ${
                       last
-                        ? "bg-ink text-white shadow-[4px_4px_0_var(--color-orange)]"
-                        : "bg-white"
+                        ? "bg-ink text-white shadow-[4px_4px_0_var(--color-orange)] group-hover:shadow-[6px_6px_0_var(--color-orange)]"
+                        : "bg-white group-hover:shadow-[4px_4px_0_var(--color-ink)]"
                     }`}
                   >
                     {s}

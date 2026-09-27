@@ -30,7 +30,7 @@ export default function Reflection() {
           return (
             <label
               key={r}
-              className={`flex cursor-pointer items-start gap-3 rounded-2xl border-[1.5px] border-ink px-4 py-3.5 text-sm font-medium transition-colors has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-indigo ${
+              className={`flex cursor-pointer items-start gap-3 rounded-2xl border-[1.5px] border-ink px-4 py-3.5 text-sm font-medium transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--color-ink)] active:scale-[0.98] has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-indigo ${
                 on ? "bg-mint" : "bg-white hover:bg-cream"
               }`}
             >
@@ -41,7 +41,7 @@ export default function Reflection() {
                 onChange={() => toggle(i)}
               />
               <span
-                className={`mt-px grid size-5 shrink-0 place-items-center rounded-md border-[1.5px] border-ink ${
+                className={`mt-px grid size-5 shrink-0 place-items-center rounded-md border-[1.5px] border-ink transition-all duration-300 ease-spring ${
                   on ? "bg-ink text-white" : "bg-white"
                 }`}
                 aria-hidden

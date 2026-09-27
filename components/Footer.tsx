@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="bg-ink text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 pt-16 pb-10 sm:px-8 md:grid-cols-[1.2fr_1fr_1.1fr]">
         <div>
-          <div className="flex items-center gap-2.5">
+          <div className="group flex w-fit items-center gap-2.5">
             <Logo />
             <span className="font-display text-lg font-extrabold">
               Psiko<span className="text-butter">edukasi</span>
@@ -27,7 +27,7 @@ export default function Footer() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="hover:text-white hover:underline"
+                  className="link-underline hover:text-white"
                 >
                   {l.label}
                 </Link>

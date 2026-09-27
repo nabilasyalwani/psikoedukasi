@@ -23,7 +23,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2.5"
+          className="group flex items-center gap-2.5"
           onClick={() => setOpen(false)}
         >
           <Logo />
@@ -45,7 +45,7 @@ export default function Header() {
                 key={n.href}
                 href={n.href}
                 aria-current={active ? "page" : undefined}
-                className={`rounded-full px-3.5 py-1.5 text-[0.8rem] font-semibold transition-colors ${
+                className={`rounded-full px-3.5 py-1.5 text-[0.8rem] font-semibold transition-all active:scale-95 ${
                   active ? "bg-ink text-white" : "hover:bg-cream"
                 }`}
               >
@@ -89,7 +89,7 @@ export default function Header() {
                     href={n.href}
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
-                    className={`flex items-center justify-between rounded-2xl border-[1.5px] border-ink px-4 py-3 text-sm font-semibold ${
+                    className={`flex items-center justify-between rounded-2xl border-[1.5px] border-ink px-4 py-3 text-sm font-semibold transition-all active:scale-[0.98] ${
                       active ? "bg-ink text-white" : "bg-white"
                     }`}
                   >

@@ -121,7 +121,7 @@ export default function ServiceCarousel() {
           type="button"
           onClick={() => go(idx - 1)}
           aria-label="Layanan sebelumnya"
-          className="absolute top-1/2 left-0 z-20 grid size-12 -translate-y-1/2 place-items-center rounded-full border-[1.5px] border-ink bg-white sm:left-4"
+          className="absolute top-1/2 left-0 z-20 grid size-12 -translate-y-1/2 place-items-center rounded-full border-[1.5px] border-ink bg-white sm:left-4 transition-all duration-300 ease-spring hover:scale-105"
         >
           <LuChevronLeft size={18} />
         </button>
@@ -129,7 +129,7 @@ export default function ServiceCarousel() {
           type="button"
           onClick={() => go(idx + 1)}
           aria-label="Layanan berikutnya"
-          className="absolute top-1/2 right-0 z-20 grid size-12 -translate-y-1/2 place-items-center rounded-full border-[1.5px] border-ink bg-orange sm:right-4"
+          className="absolute top-1/2 right-0 z-20 grid size-12 -translate-y-1/2 place-items-center rounded-full border-[1.5px] border-ink bg-orange sm:right-4 transition-all duration-300 ease-spring hover:scale-105"
         >
           <LuChevronRight size={18} />
         </button>

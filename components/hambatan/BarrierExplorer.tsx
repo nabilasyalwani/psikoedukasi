@@ -63,7 +63,7 @@ export default function BarrierExplorer() {
                   type="button"
                   onClick={() => go(i)}
                   aria-pressed={on}
-                  className={`flex items-center gap-4 rounded-xl border-[1.5px] border-ink p-1 text-left text-sm font-bold transition-all lg:w-full lg:rounded-2xl lg:px-4 lg:py-3.5 ${
+                  className={`flex items-center gap-4 rounded-xl border-[1.5px] border-ink p-1 text-left text-sm font-bold transition-all duration-300 ease-spring active:scale-95 lg:w-full lg:rounded-2xl lg:px-4 lg:py-3.5 ${
                     on
                       ? "bg-ink text-white shadow-[5px_5px_0_var(--color-lavender)]"
                       : "bg-white hover:-translate-y-0.5"

@@ -64,7 +64,7 @@ export default function Dukungan() {
           <div className="relative mx-auto aspect-square w-full max-w-md">
             <div className="brutal absolute inset-0 rounded-full bg-white" />
             <PeopleCircleNew
-              className="absolute inset-0 m-auto w-[90%]"
+              className="spin-slower pause-on-hover absolute inset-0 m-auto w-[90%]"
               priority
             />
           </div>
@@ -83,12 +83,12 @@ export default function Dukungan() {
               return (
                 <article
                   key={r.title}
-                  className={`tone-${r.tone} brutal lift relative rounded-[24px] p-6 ${tilts[i]} hover:rotate-0`}
+                  className={`tone-${r.tone} brutal lift reveal group relative rounded-[24px] p-6 transition-[rotate] duration-300 ${tilts[i]} hover:rotate-0`}
                 >
                   <span className="absolute top-5 right-6 font-display text-3xl font-extrabold text-white/80">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="grid size-11 place-items-center rounded-xl border-[1.5px] border-ink bg-white">
+                  <span className="group-wiggle grid size-11 place-items-center rounded-xl border-[1.5px] border-ink bg-white">
                     <Icon size={18} />
                   </span>
                   <h3 className="mt-6 text-xl leading-tight font-extrabold">
@@ -117,16 +117,16 @@ export default function Dukungan() {
             {friendDos.map((d) => (
               <li
                 key={d}
-                className="flex items-center gap-4 rounded-2xl border-[1.5px] border-ink bg-cream px-4 py-4 text-sm font-medium"
+                className="reveal group flex items-center gap-4 rounded-2xl border-[1.5px] border-ink bg-cream px-4 py-4 text-sm font-medium transition-all duration-300 ease-spring hover:translate-x-1 hover:bg-white hover:shadow-[4px_4px_0_var(--color-ink)]"
               >
-                <span className="grid size-8 shrink-0 place-items-center rounded-lg border-[1.5px] border-ink bg-mint">
+                <span className="grid size-8 shrink-0 place-items-center rounded-lg border-[1.5px] border-ink bg-mint transition-transform duration-300 ease-spring group-hover:scale-115 group-hover:-rotate-12">
                   <LuCheck size={15} />
                 </span>
                 {d}
               </li>
             ))}
-            <li className="flex items-center gap-4 rounded-2xl border-[1.5px] border-ink bg-ink px-4 py-4 text-sm font-medium text-white shadow-[4px_4px_0_var(--color-pink-deep)]">
-              <span className="grid size-8 shrink-0 place-items-center rounded-lg border-[1.5px] border-ink bg-pink text-ink">
+            <li className="reveal group flex items-center gap-4 rounded-2xl border-[1.5px] border-ink bg-ink px-4 py-4 text-sm font-medium text-white shadow-[4px_4px_0_var(--color-pink-deep)] transition-all duration-300 ease-spring hover:translate-x-1 hover:shadow-[7px_7px_0_var(--color-pink-deep)]">
+              <span className="group-wiggle grid size-8 shrink-0 place-items-center rounded-lg border-[1.5px] border-ink bg-pink text-ink">
                 <LuX size={15} />
               </span>
               <span>

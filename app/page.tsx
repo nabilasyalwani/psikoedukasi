@@ -25,7 +25,7 @@ const chapterArt: Record<string, ReactNode> = {
   "01": <Overwhelmed className="h-full w-full" />,
   "02": <MirrorPerson className="h-full w-full" />,
   "03": <Doubts className="h-full w-full" />,
-  "04": <PeopleCircleNew className="h-full w-full" />,
+  "04": <PeopleCircleNew className="spin-slower h-full w-full" />,
   "05": <NightWindow className="h-full w-full" />,
 };
 
@@ -74,7 +74,7 @@ export default function Home() {
                 className="justify-center btn btn-dark px-8! py-3! w-full sm:max-w-sm lg:max-w-fit "
               >
                 Mulai
-                <span className="ml-2 grid size-6 place-items-center rounded-full bg-orange text-ink">
+                <span className="btn-icon pulse-ring ml-2 grid size-6 place-items-center rounded-full bg-orange text-ink">
                   <LuArrowRight size={14} />
                 </span>
               </ScrollLink>
@@ -83,7 +83,7 @@ export default function Home() {
 
           <div className="relative mx-auto w-full max-w-md">
             <div className="brutal relative aspect-4/5 overflow-hidden rounded-t-full rounded-b-4xl bg-linear-to-b from-lavender to-periwinkle">
-              <div className="absolute inset-x-10 top-16 aspect-square rounded-full border-[1.5px] border-dashed border-ink/50" />
+              <div className="spin-slower absolute inset-x-10 top-16 aspect-square rounded-full border-[1.5px] border-dashed border-ink/50" />
               <GroupHug
                 className="absolute inset-x-0 bottom-0 w-full"
                 priority
@@ -104,7 +104,7 @@ export default function Home() {
               </span>
             </div>
 
-            <div className="brutal-sm absolute -right-2 bottom-10 w-40 rotate-3 rounded-2xl bg-butter p-4 sm:-right-8">
+            <div className="brutal-sm floaty absolute -right-2 bottom-10 w-40 rotate-3 rounded-2xl [animation-delay:-2.5s] bg-butter p-4 sm:-right-8">
               <p className="font-display text-4xl font-extrabold">7</p>
               <p className="mt-1 text-xs leading-snug font-medium">
                 langkah sederhana untuk mulai mencari bantuan
@@ -161,7 +161,7 @@ export default function Home() {
               <Link
                 key={c.no}
                 href={c.href}
-                className={`tone-${c.tone} brutal lift group relative flex min-h-80 flex-col overflow-hidden rounded-[28px] p-7`}
+                className={`tone-${c.tone} brutal lift reveal group relative flex min-h-80 flex-col overflow-hidden rounded-[28px] p-7`}
               >
                 <span className="chip self-start">Bab {c.no}</span>
                 <h3
@@ -192,7 +192,7 @@ export default function Home() {
               <Link
                 key={c.no}
                 href={c.href}
-                className={`tone-${c.tone} brutal lift group relative flex min-h-72 flex-col overflow-hidden rounded-[28px] p-6`}
+                className={`tone-${c.tone} brutal lift reveal group relative flex min-h-72 flex-col overflow-hidden rounded-[28px] p-6`}
               >
                 <span className="chip self-start">Bab {c.no}</span>
                 <h3 className="mt-4 text-2xl leading-tight font-extrabold">
