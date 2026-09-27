@@ -1,26 +1,231 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-cream: #fbf6ec;
+  --color-paper: #fffdf8;
+  --color-ink: #1e1b2e;
+  --color-ink-soft: #2a2740;
+  --color-muted: #5d5a70;
+  --color-orange: #f4922a;
+  --color-lavender: #dcd2f6;
+  --color-mint: #c8f0da;
+  --color-mint-deep: #5fc995;
+  --color-pink: #f8d0dd;
+  --color-pink-deep: #e98aa8;
+  --color-red-deep: #e5575c;
+  --color-butter: #fae3a2;
+  --color-periwinkle: #c9d4f8;
+  --color-indigo: #4052b5;
+  --color-indigo-soft: #7d8de0;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-butter);
+  }
+
+  :focus-visible {
+    outline: 2.5px solid var(--color-indigo);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Reusable pieces ---------- */
+
+@layer components {
+  .dots-bg {
+    background-image: radial-gradient(
+      rgba(30, 27, 46, 0.09) 1px,
+      transparent 1.2px
+    );
+    background-size: 22px 22px;
+  }
+
+  .brutal {
+    border: 1.5px solid var(--color-ink);
+    box-shadow: 6px 6px 0 var(--color-ink);
+  }
+
+  .brutal-sm {
+    border: 1.5px solid var(--color-ink);
+    box-shadow: 3px 3px 0 var(--color-ink);
+  }
+
+  .lift {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .lift:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--color-ink);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.7rem 1.25rem;
+    border: 1.5px solid var(--color-ink);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background 0.15s;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    transform: translate(-1px, -1px);
+  }
+  .btn:active {
+    transform: translate(1px, 1px);
+  }
+  .btn-dark {
+    background: var(--color-ink);
+    color: #fff;
+    box-shadow: 4px 4px 0 var(--color-pink);
+  }
+  .btn-light {
+    background: #fff;
+    color: var(--color-ink);
+  }
+  .btn-orange {
+    background: var(--color-orange);
+    color: var(--color-ink);
+    box-shadow: 3px 3px 0 var(--color-ink);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: 999px;
+    background: #fff;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-indigo);
+  }
+
+  .highlight {
+    display: inline-block;
+    border: 2px solid var(--color-ink);
+    border-radius: 14px;
+    padding: 0 0.3em 0.05em;
+    box-shadow: 4px 4px 0 var(--color-ink);
+    line-height: 1.05;
+  }
+
+  .tone-lavender {
+    background: var(--color-lavender);
+  }
+  .tone-mint {
+    background: var(--color-mint);
+  }
+  .tone-pink {
+    background: var(--color-pink);
+  }
+  .tone-butter {
+    background: var(--color-butter);
+  }
+  .tone-periwinkle {
+    background: var(--color-periwinkle);
+  }
+}
+
+/* ---------- Animations ---------- */
+
+@layer components {
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .marquee-track {
+    animation: marquee 32s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .spin-slow {
+    animation: spin-slow 22s linear infinite;
+  }
+
+  @keyframes floaty {
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  .floaty {
+    animation: floaty 5s ease-in-out infinite;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .fade-up {
+    animation: fade-up 0.35s ease both;
+  }
+
+  @keyframes release {
+    to {
+      transform: translate(calc(-50% + var(--dx, 0px)), -160px)
+        rotate(var(--dr, 20deg));
+      opacity: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
