@@ -18,7 +18,7 @@ const body = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Psikoedukasi — Stres Akademik & Mencari Bantuan",
+    default: "Psikoedukasi - Edukasi Psikologi Untuk Mengatasi Stres Akademik",
     template: "%s · Psikoedukasi",
   },
   description: SITE_DESC,
