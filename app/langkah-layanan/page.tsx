@@ -38,7 +38,7 @@ export default function LangkahLayanan() {
               menentukan langkah berikutnya bersama tenaga profesional.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href="#langkah" className="btn btn-dark !shadow-none">
+              <a href="#langkah" className="btn btn-dark shadow-none!">
                 Lihat 7 langkah
               </a>
               <a href="#layanan" className="btn btn-light">
@@ -46,7 +46,7 @@ export default function LangkahLayanan() {
               </a>
             </div>
           </div>
-          <div className="brutal relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-t-full rounded-b-[32px] bg-white">
+          <div className="brutal relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-t-full rounded-b-4xl bg-white">
             <FriendsArch
               className="absolute inset-x-0 bottom-0 w-full"
               priority
@@ -59,7 +59,7 @@ export default function LangkahLayanan() {
       <section id="langkah" className="scroll-mt-10 py-20">
         <Container className="grid gap-8 lg:grid-cols-[0.8fr_1.4fr]">
           <div className="flex flex-col overflow-hidden rounded-[28px] border-[1.5px] border-ink bg-ink p-8 text-white shadow-[6px_6px_0_var(--color-orange)]">
-            <p className="eyebrow !text-butter">Langkah-langkah</p>
+            <p className="eyebrow text-butter!">Langkah-langkah</p>
             <h2 className="mt-3 text-4xl leading-[1.05] font-extrabold">
               Satu langkah kecil dalam satu waktu.
             </h2>
@@ -78,13 +78,16 @@ export default function LangkahLayanan() {
 
           <ol className="relative grid gap-3">
             <span
-              className="absolute top-6 bottom-6 left-[21px] border-l-2 border-dashed border-ink/40"
+              className="absolute top-6 bottom-6 left-5.25 border-l-2 border-dashed border-ink/40"
               aria-hidden
             />
             {steps.map((s, i) => {
               const last = i === steps.length - 1;
               return (
-                <li key={s} className="reveal group relative flex items-center gap-4">
+                <li
+                  key={s}
+                  className="reveal group relative flex items-center gap-4"
+                >
                   <span
                     className={`relative z-10 grid size-11 shrink-0 place-items-center rounded-full border-[1.5px] border-ink font-display font-extrabold transition-transform duration-300 ease-spring group-hover:scale-115 ${
                       last ? "bg-orange" : `tone-${stepTones[i]}`
@@ -110,7 +113,7 @@ export default function LangkahLayanan() {
                         href="#layanan"
                         className="inline-flex items-center gap-1 text-xs text-indigo underline underline-offset-2"
                       >
-                        Lihat direktori <LuArrowDown size={12} />
+                        Lihat layanan <LuArrowDown size={12} />
                       </a>
                     )}
                   </div>

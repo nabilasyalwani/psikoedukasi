@@ -31,6 +31,12 @@ const sources = {
   "student-happy": "student-happy.png",
   "student-sad": "student-sad.png",
   "old-lady": drawkit(2),
+  puspaga: "puspaga.png",
+  mastery: "mastery.png",
+  psikomorfosa: "psikomorfosa.png",
+  "pusat-layanan-psikologi-unhas": "pusat-layanan-psikologi-unhas.png",
+  bermakna: "bermakna.png",
+  "daya-potensia-indonesia": "daya-potensia-indonesia.png",
 };
 
 const SIZE = 1000;

@@ -10,6 +10,7 @@ import {
   LuPhone,
 } from "react-icons/lu";
 import { FaWhatsapp } from "react-icons/fa6";
+import Image from "next/image";
 
 const waHref = (phone: string) =>
   `https://wa.me/62${phone.replace(/\D/g, "").replace(/^0/, "")}`;
@@ -20,11 +21,20 @@ function Card({ s, active }: { s: Service; active: boolean }) {
       className={`tone-${s.tone} flex h-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-ink`}
       style={{ boxShadow: `8px 8px 0 var(--color-${s.tone})` }}
     >
-      <div className="flex items-center justify-between p-5">
-        <span className="grid size-12 place-items-center rounded-full border-[1.5px] border-ink bg-white font-display font-extrabold">
-          {s.initials}
-        </span>
-        <span className="chip">{s.badge}</span>
+      <div
+        className={`relative flex h-32 shrink-0 items-start justify-end border-b-[1.5px] border-ink p-4 ${s.image ? "bg-white" : ""}`}
+      >
+        {s.image && (
+          <Image
+            src={`/${s.image.replace(/^\//, "")}`}
+            alt={`Logo ${s.name}`}
+            fill
+            sizes="20rem"
+            draggable={false}
+            className="object-contain p-3 select-none"
+          />
+        )}
+        <span className="chip relative z-10">{s.badge}</span>
       </div>
       <div className="flex flex-1 flex-col bg-white p-5">
         <h3 className="text-xl leading-tight font-extrabold">{s.name}</h3>

@@ -83,7 +83,7 @@ export default function Dukungan() {
               return (
                 <article
                   key={r.title}
-                  className={`tone-${r.tone} brutal lift reveal group relative rounded-[24px] p-6 transition-[rotate] duration-300 ${tilts[i]} hover:rotate-0`}
+                  className={`tone-${r.tone} brutal lift reveal group relative rounded-3xl p-6 transition-[rotate] duration-300 ${tilts[i]} hover:rotate-0`}
                 >
                   <span className="absolute top-5 right-6 font-display text-3xl font-extrabold text-white/80">
                     {String(i + 1).padStart(2, "0")}
@@ -119,7 +119,7 @@ export default function Dukungan() {
                 key={d}
                 className="reveal group flex items-center gap-4 rounded-2xl border-[1.5px] border-ink bg-cream px-4 py-4 text-sm font-medium transition-all duration-300 ease-spring hover:translate-x-1 hover:bg-white hover:shadow-[4px_4px_0_var(--color-ink)]"
               >
-                <span className="grid size-8 shrink-0 place-items-center rounded-lg border-[1.5px] border-ink bg-mint transition-transform duration-300 ease-spring group-hover:scale-115 group-hover:-rotate-12">
+                <span className="grid size-8 shrink-0 place-items-center rounded-lg border-[1.5px] border-ink bg-mint transition-transform duration-300 ease-spring group-hover:scale-115">
                   <LuCheck size={15} />
                 </span>
                 {d}

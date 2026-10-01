@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import { barriers } from "@/lib/content";
-import { LuArrowDown, LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import {
+  LuArrowDown,
+  LuChevronLeft,
+  LuChevronRight,
+  LuSparkles,
+} from "react-icons/lu";
 import {
   Blanket,
   OldLady,
@@ -17,12 +22,14 @@ const art = [OldLady, Therapist, RainCloud, PeopleRing, PhoneTalk, Blanket];
 export default function BarrierExplorer() {
   const [active, setActive] = useState(0);
   const [seen, setSeen] = useState<Set<number>>(new Set([0]));
+  const [revealed, setRevealed] = useState(false);
   const b = barriers[active];
   const Art = art[active];
 
   const go = (i: number) => {
     const n = (i + barriers.length) % barriers.length;
     setActive(n);
+    setRevealed(false);
     setSeen((prev) => new Set(prev).add(n));
   };
 
@@ -99,15 +106,33 @@ export default function BarrierExplorer() {
               </p>
               <p className="mt-1.5 text-sm font-medium">{b.felt}</p>
             </div>
-            <p className="mt-5 flex items-center gap-2 text-xs font-semibold">
-              <span className="grid size-6 place-items-center rounded-full bg-ink text-white">
-                <LuArrowDown size={12} />
+            <button
+              type="button"
+              onClick={() => setRevealed((r) => !r)}
+              aria-expanded={revealed}
+              aria-controls={`reframe-${active}`}
+              className={`group mt-5 flex items-center gap-2 rounded-full border-[1.5px] border-ink bg-white py-1 pr-3 pl-1 text-xs font-semibold transition-all duration-300 ease-spring hover:-translate-y-0.5 active:scale-95 ${
+                revealed ? "" : "nudge shadow-[3px_3px_0_var(--color-ink)]"
+              }`}
+            >
+              <span
+                className={`grid size-6 place-items-center rounded-full bg-ink text-white`}
+              >
+                <LuArrowDown
+                  size={12}
+                  className={`transition-transform duration-300 ${revealed ? "rotate-180" : ""}`}
+                />
               </span>
-              Coba lihat dari sisi lain
-            </p>
-            <p className="mt-3 rounded-2xl bg-ink p-5 font-display text-md leading-snug font-bold text-white shadow-[4px_4px_0_#fff]">
-              {b.reframe}
-            </p>
+              {revealed ? "Sembunyikan" : "Coba lihat dari sisi lain"}
+            </button>
+            {revealed && (
+              <p
+                id={`reframe-${active}`}
+                className="fade-up mt-3 rounded-2xl bg-ink p-5 font-display text-md leading-snug font-bold text-white shadow-[4px_4px_0_#fff]"
+              >
+                {b.reframe}
+              </p>
+            )}
           </div>
           <div className="relative flex min-h-fit flex-col justify-between p-6">
             <span

@@ -120,6 +120,30 @@ export const causes: {
   },
 ];
 
+export const impacts: { title: string; content: string[] }[] = [
+  {
+    title: "Pada kegiatan belajar",
+    content: [
+      "Sulit konsentrasi dan belajar",
+      "Motivasi belajar berkurang",
+      "Produktivitas menurun",
+      "Prestasi akademik dapat terganggu",
+    ],
+  },
+  {
+    title: "Pada tubuh",
+    content: ["Kelelahan", "Gangguan tidur"],
+  },
+  {
+    title: "Pada hubungan sosial & emosi",
+    content: [
+      "Menarik diri dari lingkungan sosial",
+      "Lebih mudah mengalami konflik",
+      "Risiko gangguan kesehatan mental",
+    ],
+  },
+];
+
 export const reflections = [
   "Sulit berkonsentrasi saat belajar atau kuliah",
   "Merasa kewalahan dengan tugas yang ada",
@@ -441,6 +465,7 @@ export type Service = {
   instagram: string;
   badge: string;
   tone: Tone;
+  image?: string;
 };
 
 export const services: Service[] = [
@@ -453,6 +478,7 @@ export const services: Service[] = [
     instagram: "puspagasulsel",
     badge: "Biaya: Gratis",
     tone: "lavender",
+    image: "illustrations/puspaga.webp",
   },
   {
     initials: "UH",
@@ -463,6 +489,7 @@ export const services: Service[] = [
     instagram: "pusatlayananpsikologiunhas",
     badge: "Layanan kampus",
     tone: "mint",
+    image: "illustrations/pusat-layanan-psikologi-unhas.webp",
   },
   {
     initials: "BP",
@@ -473,6 +500,7 @@ export const services: Service[] = [
     instagram: "bermakna.center",
     badge: "Manggala",
     tone: "butter",
+    image: "illustrations/bermakna.webp",
   },
   {
     initials: "PM",
@@ -483,6 +511,7 @@ export const services: Service[] = [
     instagram: "psikomorfosa",
     badge: "Rappocini",
     tone: "pink",
+    image: "illustrations/psikomorfosa.webp",
   },
   {
     initials: "DP",
@@ -493,6 +522,7 @@ export const services: Service[] = [
     instagram: "dayapotensiaind",
     badge: "Rappocini",
     tone: "periwinkle",
+    image: "illustrations/daya-potensia-indonesia.webp",
   },
   {
     initials: "MP",
@@ -503,5 +533,6 @@ export const services: Service[] = [
     instagram: "master_psikologi",
     badge: "Tamalanrea",
     tone: "mint",
+    image: "illustrations/mastery.webp",
   },
 ];

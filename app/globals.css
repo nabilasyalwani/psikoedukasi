@@ -332,6 +332,41 @@
     animation: floaty 5s ease-in-out infinite;
   }
 
+  @keyframes nudge {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+    }
+    70% {
+      transform: translateY(-5px);
+    }
+    80% {
+      transform: translateY(0);
+    }
+    88% {
+      transform: translateY(-2px);
+    }
+  }
+  .nudge {
+    animation: nudge 2.4s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(0.8) rotate(0deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.15) rotate(15deg);
+    }
+  }
+  .twinkle {
+    animation: twinkle 1.6s ease-in-out infinite;
+  }
+
   @keyframes fade-up {
     from {
       opacity: 0;

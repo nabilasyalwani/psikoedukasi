@@ -17,6 +17,7 @@ import {
 import CauseTabs from "@/components/stres/CauseTabs";
 import Reflection from "@/components/stres/Reflection";
 import BurdenGame from "@/components/stres/BurdenGame";
+import { impacts } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Mengenali Stres Akademik" };
 
@@ -100,14 +101,9 @@ export default function StresAkademik() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <article className="relative min-h-48 overflow-hidden rounded-[26px] border-[1.5px] border-white bg-lavender p-7 shadow-[6px_6px_0_var(--color-orange)] md:row-span-2">
-              <span className="chip">Pada kegiatan belajar</span>
+              <span className="chip">{impacts[0].title}</span>
               <ul className="mt-5 grid gap-2.5 text-[0.95rem] font-semibold">
-                {[
-                  "Sulit konsentrasi dan belajar",
-                  "Motivasi belajar berkurang",
-                  "Produktivitas menurun",
-                  "Prestasi akademik dapat terganggu",
-                ].map((d) => (
+                {impacts[0].content.map((d) => (
                   <li key={d} className="flex items-center gap-3">
                     <span className="size-2 rounded-full bg-ink" aria-hidden />
                     {d}
@@ -119,9 +115,9 @@ export default function StresAkademik() {
 
             <article className="relative flex min-h-48 items-center overflow-hidden rounded-[26px] border-[1.5px] border-white bg-butter p-7 shadow-[6px_6px_0_var(--color-orange)]">
               <div className="relative z-10">
-                <span className="chip">Pada tubuh</span>
+                <span className="chip">{impacts[1].title}</span>
                 <ul className="mt-5 grid gap-2.5 text-[0.95rem] font-semibold">
-                  {["Kelelahan", "Gangguan tidur"].map((d) => (
+                  {impacts[1].content.map((d) => (
                     <li key={d} className="flex items-center gap-3">
                       <span
                         className="size-2 rounded-full bg-ink"
@@ -136,13 +132,9 @@ export default function StresAkademik() {
             </article>
 
             <article className="relative min-h-48 overflow-hidden rounded-[26px] border-[1.5px] border-white bg-pink p-7 shadow-[6px_6px_0_var(--color-orange)]">
-              <span className="chip">Pada emosi &amp; hubungan sosial</span>
+              <span className="chip">{impacts[2].title}</span>
               <ul className="mt-5 grid gap-2.5 text-[0.95rem] font-semibold">
-                {[
-                  "Meningkatkan rasa cemas dan kecemasan",
-                  "Lebih mudah mengalami konflik",
-                  "Menarik diri dari lingkungan sosial",
-                ].map((d) => (
+                {impacts[2].content.map((d) => (
                   <li key={d} className="flex items-center gap-3">
                     <span className="size-2 rounded-full bg-ink" aria-hidden />
                     {d}
@@ -175,7 +167,7 @@ export default function StresAkademik() {
         <Container>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="eyebrow !text-butter">
+              <p className="eyebrow text-butter!">
                 Yang sering dipikul mahasiswa
               </p>
               <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">
